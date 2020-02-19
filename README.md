@@ -5,6 +5,7 @@ This educational project has been done with the help of tutorials in [Udemy Spri
 
 ## Technologies and Frameworks
 - Java
+- Maven
 - Spring MVC
 - Hibernate
 - MySQL
