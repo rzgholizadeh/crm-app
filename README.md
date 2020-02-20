@@ -16,5 +16,11 @@ This educational project has been done with the help of tutorials in [Udemy Spri
 
 ## Database EER Diagram
 ## Setup
+### Database
+Run the [sql scripts](https://github.com/rzgholizadeh/database-web-app/tree/master/other/sql-scripts) to create the user and the database with some initial data in it.
+
+The username and password of the database user is "springstudent".
+
+The sql scripts has been developed by the Udemy course instructor.
 
 
