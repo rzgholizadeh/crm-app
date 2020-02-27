@@ -1,19 +1,24 @@
 package com.mrghz.crmapp.entity;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CustomerTest {
 
+	Customer theCustomer;
+
 	@BeforeEach
 	void setUp() throws Exception {
+		theCustomer = new Customer(1, "testFirstName", "testLastName", "testEmail");
 	}
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		assertThat(theCustomer.getFirstName()).isEqualTo("testFirstName");
+		assertThat(theCustomer.getLastName()).isEqualTo("testLastName");
+		assertThat(theCustomer.getEmail()).isEqualTo("testEmail");
 	}
 
 }

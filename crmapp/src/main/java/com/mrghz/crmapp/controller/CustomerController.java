@@ -27,8 +27,9 @@ public class CustomerController {
 
 	@GetMapping("/list")
 	public String listCustomers(Model theModel) {
-		List<Customer> theCustomer = customerService.findAll();
-		theModel.addAttribute("customers", theCustomer);
+		List<Customer> theCustomers = customerService.findAll();
+		System.out.println("In the customer controller, sutomer list : " + theCustomers);
+		theModel.addAttribute("customers", theCustomers);
 		return "customers/list-customers";
 	}
 
