@@ -1,14 +1,16 @@
 package com.mrghz.crmapp.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyInt;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,6 +22,7 @@ import mrghz.crmapp.entity.Customer;
 import mrghz.crmapp.service.CustomerServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
+@DisplayName("Customer Service Impl Test - ")
 class CustomerServiceImplTest {
 
 	@Mock
@@ -28,34 +31,41 @@ class CustomerServiceImplTest {
 	@InjectMocks
 	CustomerServiceImpl theService;
 
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
-	@Disabled
+	@DisplayName("findAll()")
 	@Test
 	void testFindAll() {
-		fail("Not yet implemented");
+		Customer customer = new Customer();
+		List<Customer> customers = new ArrayList<Customer>();
+		customers.add(customer);
+		when(customerRepositoryMock.findAllByOrderByLastNameAsc()).thenReturn(customers);
+		List<Customer> foundCustomers = theService.findAll();
+		verify(customerRepositoryMock).findAllByOrderByLastNameAsc();
+		assertThat(foundCustomers).hasSize(1);
+
 	}
 
+	@DisplayName("findById()")
 	@Test
 	void testFindById() {
 		Customer costumer = new Customer();
 		when(customerRepositoryMock.findById(1)).thenReturn(Optional.of(costumer));
-		costumer = theService.findById(1);
-		assertThat(costumer).isNotNull();
+		Customer foundCostumer = theService.findById(1);
+		assertThat(foundCostumer).isNotNull();
 		verify(customerRepositoryMock).findById(1);
 	}
 
-	@Disabled
+	@DisplayName("save()")
 	@Test
 	void testSave() {
+		theService.save(new Customer());
+		verify(customerRepositoryMock).save(any(Customer.class));
 	}
 
+	@DisplayName("deleteById()")
 	@Test
 	void testDeleteById() {
 		theService.deleteById(1);
-		verify(customerRepositoryMock).deleteById(1);
+		verify(customerRepositoryMock).deleteById(anyInt());
 	}
 
 }
