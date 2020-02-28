@@ -1,7 +1,11 @@
 package com.mrghz.crmapp.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -12,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import mrghz.crmapp.dao.CustomerRepository;
+import mrghz.crmapp.entity.Customer;
 import mrghz.crmapp.service.CustomerServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
@@ -33,10 +38,13 @@ class CustomerServiceImplTest {
 		fail("Not yet implemented");
 	}
 
-	@Disabled
 	@Test
 	void testFindById() {
-		fail("Not yet implemented");
+		Customer costumer = new Customer();
+		when(customerRepositoryMock.findById(1)).thenReturn(Optional.of(costumer));
+		costumer = theService.findById(1);
+		assertThat(costumer).isNotNull();
+		verify(customerRepositoryMock).findById(1);
 	}
 
 	@Disabled
