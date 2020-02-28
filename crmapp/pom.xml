@@ -17,6 +17,8 @@
 
 	<properties>
 		<java.version>13</java.version>
+		<junit-platform.version>5.3.1</junit-platform.version>
+		<mockito.version>2.23.0</mockito.version>
 	</properties>
 
 	<dependencies>
@@ -61,6 +63,20 @@
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
 			<version>3.15.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>${mockito.version}</version>
 			<scope>test</scope>
 		</dependency>
 
