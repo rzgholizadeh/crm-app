@@ -1,4 +1,4 @@
-package com.mrghz.crmapp.service;
+package mrghz.crmapp.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mrghz.crmapp.dao.CustomerRepository;
-import com.mrghz.crmapp.entity.Customer;
+import mrghz.crmapp.dao.CustomerRepository;
+import mrghz.crmapp.entity.Customer;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {

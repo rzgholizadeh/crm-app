@@ -1,4 +1,4 @@
-package com.mrghz.crmapp.controller;
+package mrghz.crmapp.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mrghz.crmapp.entity.Customer;
-import com.mrghz.crmapp.service.CustomerService;
+import mrghz.crmapp.entity.Customer;
+import mrghz.crmapp.service.CustomerService;
 
 @Controller
 @RequestMapping("/customers")

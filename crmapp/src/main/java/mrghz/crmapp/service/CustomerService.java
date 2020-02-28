@@ -1,8 +1,8 @@
-package com.mrghz.crmapp.service;
+package mrghz.crmapp.service;
 
 import java.util.List;
 
-import com.mrghz.crmapp.entity.Customer;
+import mrghz.crmapp.entity.Customer;
 
 public interface CustomerService {
 

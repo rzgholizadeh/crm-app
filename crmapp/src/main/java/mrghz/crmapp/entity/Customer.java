@@ -1,4 +1,4 @@
-package com.mrghz.crmapp.entity;
+package mrghz.crmapp.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

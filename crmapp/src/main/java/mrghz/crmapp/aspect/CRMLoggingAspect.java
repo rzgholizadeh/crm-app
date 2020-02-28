@@ -1,4 +1,4 @@
-package com.mrghz.crmapp.aspect;
+package mrghz.crmapp.aspect;
 
 import java.util.logging.Logger;
 
