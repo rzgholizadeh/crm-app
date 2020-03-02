@@ -40,10 +40,8 @@ class CustomerServiceImplTestBDD {
 		List<Customer> customers = new ArrayList<Customer>();
 		customers.add(customer);
 		given(customerRepositoryMock.findAllByOrderByLastNameAsc()).willReturn(customers);
-
 		// when
 		List<Customer> foundCustomers = theService.findAll();
-
 		// then
 		then(customerRepositoryMock).should().findAllByOrderByLastNameAsc();
 		assertThat(foundCustomers).hasSize(1);
@@ -56,10 +54,8 @@ class CustomerServiceImplTestBDD {
 		// given
 		Customer costumer = new Customer();
 		given(customerRepositoryMock.findById(1)).willReturn(Optional.of(costumer));
-
 		// when
 		Customer foundCostumer = theService.findById(1);
-
 		// then
 		then(customerRepositoryMock).should().findById(1);
 		assertThat(foundCostumer).isNotNull();
@@ -70,7 +66,6 @@ class CustomerServiceImplTestBDD {
 	void testSave() {
 		// when
 		theService.save(new Customer());
-
 		// then
 		then(customerRepositoryMock).should().save(any(Customer.class));
 	}
@@ -80,7 +75,6 @@ class CustomerServiceImplTestBDD {
 	void testDeleteById() {
 		// when
 		theService.deleteById(1);
-
 		// then
 		then(customerRepositoryMock).should().deleteById(anyInt());
 	}
