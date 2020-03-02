@@ -62,6 +62,8 @@ class CustomerControllerTest {
 		mockMvc.perform(get("/customers/list")).andExpect(status().isOk())
 				.andExpect(model().attributeExists("customers"))
 				.andExpect(view().name("customers/list-customers"));
+		
+		//test
 
 	}
 
