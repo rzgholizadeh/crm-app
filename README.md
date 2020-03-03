@@ -14,7 +14,6 @@ This educational project has been done with the help of tutorials in [Udemy Spri
 - Add/Update/Delete cutomers
 - List customers in the database
 
-## Database EER Diagram
 ## Setup
 ### Database
 Run the [sql scripts](https://github.com/rzgholizadeh/database-web-app/tree/master/other/sql-scripts) to create the user and the database with some initial data in it.
