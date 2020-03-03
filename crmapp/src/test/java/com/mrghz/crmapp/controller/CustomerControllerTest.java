@@ -5,6 +5,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.then;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -20,9 +24,6 @@ import org.springframework.ui.Model;
 import mrghz.crmapp.controller.CustomerController;
 import mrghz.crmapp.entity.Customer;
 import mrghz.crmapp.service.CustomerService;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Customer Controller Test - ")
@@ -62,35 +63,43 @@ class CustomerControllerTest {
 		mockMvc.perform(get("/customers/list")).andExpect(status().isOk())
 				.andExpect(model().attributeExists("customers"))
 				.andExpect(view().name("customers/list-customers"));
-		
-		//test
 
 	}
 
 	@DisplayName("showFormForAdd()")
 	@Test
-	void testShowFormForAdd() {
+	void testShowFormForAdd() throws Exception {
 		// when
 		String viewName = theController.showFormForAdd(modelMock);
 		// then
 		then(modelMock).should().addAttribute(anyString(), any());
 		assertThat(viewName).isEqualTo(CUSTOMERS_CUSTOMER_FORM);
+
+		// Using Spring MVC stand-alone
+		mockMvc.perform(get("/customers/showFormForAdd")).andExpect(status().isOk())
+				.andExpect(model().attributeExists("customer"))
+				.andExpect(view().name("customers/customer-form"));
 	}
 
 	@DisplayName("showFormForUpdate()")
 	@Test
-	void testShowFormForUpdate() {
+	void testShowFormForUpdate() throws Exception {
 		// when
 		String viewName = theController.showFormForUpdate(1, modelMock);
 		// then
 		then(customerServicelMock).should().findById(1);
 		then(modelMock).should().addAttribute(anyString(), any());
 		assertThat(viewName).isEqualTo(CUSTOMERS_CUSTOMER_FORM);
+
+		// Using Spring MVC stand-alone
+		mockMvc.perform(get("/customers/showFormForUpdate")).andExpect(status().isOk())
+				.andExpect(model().attributeExists("customer"))
+				.andExpect(view().name("customers/customer-form"));
 	}
 
 	@DisplayName("delete()")
 	@Test
-	void testDelete() {
+	void testDelete() throws Exception {
 		// when
 		String viewName = theController.delete(1);
 		// then
