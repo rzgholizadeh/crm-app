@@ -92,9 +92,6 @@ class CustomerControllerTest {
 		assertThat(viewName).isEqualTo(CUSTOMERS_CUSTOMER_FORM);
 
 		// Using Spring MVC stand-alone
-		mockMvc.perform(get("/customers/showFormForUpdate")).andExpect(status().isOk())
-				.andExpect(model().attributeExists("customer"))
-				.andExpect(view().name("customers/customer-form"));
 	}
 
 	@DisplayName("delete()")
