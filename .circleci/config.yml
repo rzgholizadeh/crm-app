@@ -19,7 +19,7 @@ jobs:
             - image: circleci/mysql:latest
               environment:
                 MYSQL_ROOT_PASSWORD: springstudent
-                MYSQL_DATABASE: springstudent
+                #MYSQL_DATABASE: web_customer_tracker
                 MYSQL_USER: springstudent
                 MYSQL_PASSWORD: springstudent  
             
