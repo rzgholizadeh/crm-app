@@ -16,7 +16,7 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>8</java.version>
+		<java.version>13</java.version>
 		<junit-platform.version>5.3.1</junit-platform.version>
 		<mockito.version>2.23.0</mockito.version>
 	</properties>
