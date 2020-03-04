@@ -9,9 +9,8 @@ import mrghz.crmapp.Crmapp;
 @SpringBootTest(classes = Crmapp.class)
 class CrmappTests {
 
-	@Disabled
-	@Test
+/*	@Test
 	void contextLoads() {
-	}
+	}*/
 
 }
