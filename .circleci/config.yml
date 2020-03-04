@@ -49,9 +49,9 @@ jobs:
                 name: Install MySQL CLI; Import dummy data; run an example query
                 command: |
                     sudo apt-get install default-mysql-client
-                    mysql -h 127.0.0.1 -u springstudent -springstudent springstudent < sql-scripts/customer-tracker.sql
+                    mysql -h 127.0.0.1 -u springstudent -springstudent web_customer_tracker < sql-scripts/customer-tracker.sql
                     mysql -h 127.0.0.1 -u springstudent -springstudent springstudent < sql-scripts/setup-spring-security.sql
-                    mysql -h 127.0.0.1 -u springstudent -springstudent --execute="SELECT * FROM test_db.Persons"
+                    mysql -h 127.0.0.1 -u springstudent -springstudent --execute="SELECT * FROM web_customer_tracker.customer"
 
 
             # Download and cache dependencies
