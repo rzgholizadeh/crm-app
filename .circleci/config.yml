@@ -16,12 +16,12 @@ jobs:
             # CircleCI maintains a library of pre-built images
             # documented at https://circleci.com/docs/2.0/circleci-images/
             # - image: circleci/postgres:9.4
-            #- image: circleci/mysql:latest
-              #environment:
-                #MYSQL_ROOT_PASSWORD: springstudent
-                #MYSQL_DATABASE: web_customer_tracker
-                #MYSQL_USER: springstudent
-                #MYSQL_PASSWORD: springstudent  
+            - image: circleci/mysql:latest
+              environment:
+                MYSQL_ROOT_PASSWORD: springstudent
+                MYSQL_DATABASE: web_customer_tracker
+                MYSQL_USER: springstudent
+                MYSQL_PASSWORD: springstudent  
             
 
               
@@ -34,24 +34,24 @@ jobs:
             - checkout
             
             # MYSQL_DATABASE
-            #- run:
+            - run:
                 # Our primary container isn't MYSQL so run a sleep command until it's ready.
                 #name: Waiting for MySQL to be ready
-                #command: |
-                    #for i in `seq 1 10`;
-                    #do
-                        #nc -z 127.0.0.1 3306 && echo Success && exit 0
-                        #echo -n .
-                        #sleep 1
-                    #done
-                    #echo Failed waiting for MySQL && exit 1
-            #- run:
-                #name: Install MySQL CLI; Import dummy data; run an example query
-                #command: |
-                    #sudo apt-get install default-mysql-client
-                    #mysql -h 127.0.0.1 -u springstudent -p springstudent web_customer_tracker < sql-scripts/customer-tracker.sql
-                    #mysql -h 127.0.0.1 -u springstudent -p springstudent --execute="SELECT * FROM web_customer_tracker.customer"
-                    #mysql -h 127.0.0.1 -u springstudent -p springstudent spring_security_bcrypt < sql-scripts/setup-spring-security.sql
+                command: |
+                    for i in `seq 1 10`;
+                    do
+                        nc -z 127.0.0.1 3306 && echo Success && exit 0
+                        echo -n .
+                        sleep 1
+                    done
+                    echo Failed waiting for MySQL && exit 1
+            - run:
+                name: Install MySQL CLI; Import dummy data; run an example query
+                command: |
+                    sudo apt-get install default-mysql-client
+                    mysql -h 127.0.0.1 -u springstudent -p springstudent web_customer_tracker < sql-scripts/customer-tracker.sql
+                    mysql -h 127.0.0.1 -u springstudent -p springstudent --execute="SELECT * FROM web_customer_tracker.customer"
+                    mysql -h 127.0.0.1 -u springstudent -p springstudent spring_security_bcrypt < sql-scripts/setup-spring-security.sql
             # Download and cache dependencies
             - restore_cache:
                   keys:
