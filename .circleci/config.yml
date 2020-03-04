@@ -19,7 +19,7 @@ jobs:
             - image: circleci/mysql:latest
               environment:
                 MYSQL_ROOT_PASSWORD: springstudent
-                #MYSQL_DATABASE: web_customer_tracker
+                MYSQL_DATABASE: web_customer_tracker
                 MYSQL_USER: springstudent
                 MYSQL_PASSWORD: springstudent  
             
@@ -50,7 +50,7 @@ jobs:
                 command: |
                     sudo apt-get install default-mysql-client
                     mysql -h 127.0.0.1 -u springstudent -p springstudent web_customer_tracker < sql-scripts/customer-tracker.sql
-                    mysql -h 127.0.0.1 -u springstudent -p springstudent spring_security_bcrypt < sql-scripts/setup-spring-security.sql
+                    
                    
 
 
