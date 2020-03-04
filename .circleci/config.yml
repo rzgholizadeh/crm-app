@@ -6,13 +6,7 @@ version: 2.1
 jobs:
     build:
         docker:
-            # specify the version you desire here
-            - image: circleci/openjdk:openjdk-13-tools-deps-buster
-
-            # Specify service dependencies here if necessary
-            # CircleCI maintains a library of pre-built images
-            # documented at https://circleci.com/docs/2.0/circleci-images/
-            # - image: circleci/postgres:9.4
+          
             
              - image: circleci/mysql:8.0.4
                environment:
@@ -20,12 +14,20 @@ jobs:
                   MYSQL_DATABASE: springstudent
                   MYSQL_USER: springstudent
                   MYSQL_PASSWORD: springstudent
+            
+            # specify the version you desire here
+            - image: circleci/openjdk:openjdk-13-tools-deps-buster
 
-        working_directory: ~/repo
+            # Specify service dependencies here if necessary
+            # CircleCI maintains a library of pre-built images
+            # documented at https://circleci.com/docs/2.0/circleci-images/
+            # - image: circleci/postgres:9.4
+            working_directory: ~/repo
 
-        environment:
+            environment:
             # Customize the JVM maximum heap limit
             MAVEN_OPTS: -Xmx3200m
+        
 
         steps:
             - checkout
