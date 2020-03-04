@@ -6,14 +6,6 @@ version: 2.1
 jobs:
     build:
         docker:
-            
-            - image: circleci/mysql:8.0.4
-              environment:
-                MYSQL_ROOT_PASSWORD: rootpw
-                MYSQL_DATABASE: test_db
-                MYSQL_USER: user
-                MYSQL_PASSWORD: passw0rd   
-            
             # specify the version you desire here
             - image: circleci/openjdk:11-browsers-legacy
               environment:
@@ -24,7 +16,13 @@ jobs:
             # CircleCI maintains a library of pre-built images
             # documented at https://circleci.com/docs/2.0/circleci-images/
             # - image: circleci/postgres:9.4
-           
+            - image: circleci/mysql:8.0.4
+              environment:
+                MYSQL_ROOT_PASSWORD: springstudent
+                MYSQL_DATABASE: springstudent
+                MYSQL_USER: springstudent
+                MYSQL_PASSWORD: springstudent  
+            
 
               
             #MYSQL_ROOT_PASSWORD: rootpw
@@ -34,6 +32,26 @@ jobs:
         working_directory: ~/crm-app
         steps:
             - checkout
+            
+            # MYSQL_DATABASE
+            - run:
+                # Our primary container isn't MYSQL so run a sleep command until it's ready.
+                name: Waiting for MySQL to be ready
+                command: |
+                    for i in `seq 1 10`;
+                    do
+                        nc -z 127.0.0.1 3306 && echo Success && exit 0
+                        echo -n .
+                        sleep 1
+                    done
+                    echo Failed waiting for MySQL && exit 1
+            - run:
+                name: Install MySQL CLI; Import dummy data; run an example query
+                command: |
+                    sudo apt-get install default-mysql-client
+                    mysql -h 127.0.0.1 -u user -ppassw0rd springstudent < sql-data/dummy.sql
+                    mysql -h 127.0.0.1 -u user -ppassw0rd --execute="SELECT * FROM test_db.Persons"
+
 
             # Download and cache dependencies
             - restore_cache:
