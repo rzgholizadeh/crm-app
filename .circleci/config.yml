@@ -8,7 +8,7 @@ jobs:
         docker:
             # specify the version you desire here
             - image: circleci/openjdk:openjdk-13-tools-deps-buster
-             working_directory: ~/crm-app
+            
              environment:
                 # Customize the JVM maximum heap limit
                 MAVEN_OPTS: -Xmx3200m
@@ -18,14 +18,14 @@ jobs:
             # documented at https://circleci.com/docs/2.0/circleci-images/
             # - image: circleci/postgres:9.4
             #- image: circleci/mysql:8.0.4
-            #
+            
 
-               
+              
             #MYSQL_ROOT_PASSWORD: rootpw
             #MYSQL_DATABASE: test_db
             #MYSQL_USER: user
             #MYSQL_PASSWORD: passw0rd
-
+        working_directory: ~/crm-app
         steps:
             - checkout
 
