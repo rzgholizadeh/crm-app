@@ -50,7 +50,7 @@ jobs:
                 command: |
                     sudo apt-get install default-mysql-client
                     mysql -h 127.0.0.1 -u springstudent -p springstudent web_customer_tracker < sql-scripts/customer-tracker.sql
-                    mysql -h 127.0.0.1 -u springstudent -p springstudent springstudent < sql-scripts/setup-spring-security.sql
+                    mysql -h 127.0.0.1 -u springstudent -p springstudent spring_security_bcrypt < sql-scripts/setup-spring-security.sql
                     mysql -h 127.0.0.1 -u springstudent -p springstudent --execute="SELECT * FROM web_customer_tracker.customer"
 
 
